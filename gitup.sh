@@ -5,7 +5,7 @@ NON_MASTER_BRANCH=()
 
 for folder in */; do
   if [[ -e "$folder/.git" ]]; then
-    branch="$(git -C "$folder" branch --show-current)"
+    branch="$(git -C "$folder" rev-parse --abbrev-ref HEAD)"
 
     if [[ "$branch" != "master" && "$branch" != "main" ]]; then
       NON_MASTER_BRANCH+=("$folder")
